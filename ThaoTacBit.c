@@ -12,6 +12,7 @@ int main(){
     getch();
 }
 
+//Chuyển từ hệ 10 sang 2 (mảng)
 void Into_bit(int *a, int n){
     int dem = 0;
     for(int i = 0; n > 0; i++){
