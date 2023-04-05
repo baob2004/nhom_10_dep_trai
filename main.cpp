@@ -1,6 +1,5 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include "graphics.h"
-#include <time.h>
 #pragma comment(lib, "graphics.lib")
 
 const int Width = 700;
@@ -35,7 +34,7 @@ void khoitao_br(Bar* bar)
 {
 	bar->x = rand()%(Width-150);
 	bar->y = 550;
-	bar->speed = 10;
+	bar->speed = 7;
 }
 
 void khoitao(Ball* ball)
@@ -88,34 +87,35 @@ void dieukhien(Ball* ball)
 		ball->x += 40;
 		ball->right = false;
 	}
+
+	if (ball->tt == DOWN)
+		ball->y += ball->speed;
+	else if (ball->tt == UP)
+		ball->y -= 7;
+	else if (ball->tt == LEFT)
+		ball->x -= ball->speed;
+	else if (ball->tt == RIGHT)
+		ball->x += ball->speed;
 		
 }
 
 
 void xuli(Ball* ball)
 {
-	// xu li bong tram bien
-	if (ball->y >= Height - bk - 1) {
-		ball->y = Height - bk - 1;
-	}
-	else if (ball->y <= bk) {
-		ball->y = bk;
-	}
-	else if (ball->x >= Width - bk - 1) {
+	
+	if (ball->x >= Width - bk - 1) {
 		ball->x = Width - bk - 1;
 	}
 	else if (ball->x <= bk) {
 		ball->x = bk;
 	}
+	/*else if (ball->y == 0 || ball->y == Height - bk - 1)
+	{	
+		cleardevice();
 		
-	if (ball->tt == DOWN)
-		ball->y += ball->speed;
-	else if (ball->tt == UP)
-		ball->y -= 5;
-	else if (ball->tt == LEFT)
-		ball->x -= ball->speed;
-	else if (ball->tt == RIGHT)
-		ball->x += ball->speed;
+		return ;
+	}*/
+		
 }
 
 void xuly_t(Bar* bar)
@@ -129,12 +129,9 @@ void xuly_t(Bar* bar)
 
 void kiemtra(Ball* ball, Bar* bar) {
 
-	int khoang_cach = ball->y - bar->y;
-	if (khoang_cach <= bk && ball->x >= bar->x && ball->x <= bar->x + 150) {
-		/*if (!ball->left && !ball->right) {*/
-			ball->tt = UP;
-		/*}*/
-	}
+	int khoang_cach = bar->y - ball->y;
+	if (khoang_cach == bk + bk / 2 && ball->x >= bar->x  && ball->x <= bar->x + 150)
+		ball->tt = UP;
 	else
 		ball->tt = DOWN;
 }
@@ -148,7 +145,7 @@ int main()
 	khoitao(&b);
 	khoitao_br(&br);
 
-	while (1)
+	while(1)
 	{
 		cleardevice();
 		// hien thi
@@ -160,8 +157,9 @@ int main()
 		// xu li
 		kiemtra(&b, &br);
 		xuly_t(&br);
+		
 		xuli(&b);
-		delay(30);
+		delay(20);
 	}
 	getch();
 	cleardevice();
