@@ -68,44 +68,20 @@ void ball_control(BALL* b)
 
 int xu_ly(BALL* b, BAR* t)
 {
-		if ((b->x + 15 >= t->x && b->x - 15 <= t->x + 150) &&
-			(b->y + b->radius == t->y - 34
-			|| b->y + b->radius == t->y - 33
-			|| b->y + b->radius == t->y - 32
-			|| b->y + b->radius == t->y - 31
-			|| b->y + b->radius == t->y - 30
-			|| b->y + b->radius == t->y - 29
-			|| b->y + b->radius == t->y - 28
-			|| b->y + b->radius == t->y - 27
-			|| b->y + b->radius == t->y - 26
-			|| b->y + b->radius == t->y - 25
-			|| b->y + b->radius == t->y - 24
-			|| b->y + b->radius == t->y - 23
-			|| b->y + b->radius == t->y - 22
-			|| b->y + b->radius == t->y - 21
-			|| b->y + b->radius == t->y - 20
-			))
+		if ((b->x + 15 >= t->x 
+			&& b->x - 15 <= t->x + 150) 
+			&& (b->y + b->radius >= t->y - 34
+			&& b->y + b->radius <= t->y - 20))
 			return UP;
 		else return DOWN;
 }
 
 void xu_ly_cham_fence(BALL* b, FENCE* f)
 {
-		if ((b->x + 15 >= f->x && b->x - 15 <= f->x + 150)
-			&& (b->y + b->radius == f->y - 22
-				|| b->y + b->radius == f->y - 23
-				|| b->y + b->radius == f->y - 24
-				|| b->y + b->radius == f->y - 25 
-				|| b->y + b->radius == f->y - 26
-				|| b->y + b->radius == f->y - 27
-				|| b->y + b->radius == f->y - 28
-				|| b->y + b->radius == f->y - 29
-				|| b->y + b->radius == f->y - 30
-				|| b->y + b->radius == f->y - 31
-				|| b->y + b->radius == f->y - 32
-				|| b->y + b->radius == f->y - 33
-				|| b->y + b->radius == f->y - 34
-				|| b->y + b->radius == f->y - 35))
+		if ((b->x + 15 >= f->x 
+			&& b->x - 15 <= f->x + 150)
+			&& (b->y + b->radius <= f->y - 22 
+			&& b->y + b->radius >= f->y - 35))
 		{
 			b->x = random(b->radius, Width - b->radius);
 			b->y = b->radius + 200;
