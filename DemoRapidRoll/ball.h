@@ -70,7 +70,7 @@ int xu_ly(BALL* b, BAR* t)
 {
 		if ((b->x + 15 >= t->x 
 			&& b->x - 15 <= t->x + 150) 
-			&& (b->y + b->radius >= t->y - 34
+			&& (b->y + b->radius >= t->y - 36
 			&& b->y + b->radius <= t->y - 20))
 			return UP;
 		else return DOWN;
@@ -80,7 +80,7 @@ void xu_ly_cham_fence(BALL* b, FENCE* f)
 {
 		if ((b->x + 15 >= f->x 
 			&& b->x - 15 <= f->x + 150)
-			&& (b->y + b->radius <= f->y - 22 
+			&& (b->y + b->radius <= f->y - 20 
 			&& b->y + b->radius >= f->y - 35))
 		{
 			b->x = random(b->radius, Width - b->radius);
