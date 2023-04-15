@@ -14,8 +14,7 @@
 
 int main()
 {
-
-again:h = 3;
+again:
 	BALL b;
 	BAR t, t2, t3;
 	FENCE f, f2;
@@ -28,7 +27,10 @@ again:h = 3;
 	create_fence2(&f2);
 	int page = 0;
 
+	h = 3;
+	m = 0;
 fi_choice: menu();
+	
 	while (1)
 	{
 		if (GetAsyncKeyState(VK_LBUTTON)) {
