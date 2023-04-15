@@ -7,45 +7,19 @@
 
 #define Width 700
 #define Height 800
-#define POINT 0;
+#define SCORE 0;
 #define HEART 3;
 
 enum trangThai { UP, DOWN, LEFT, RIGHT };
 
 int h = HEART;
-int m = POINT;
+int m = SCORE;
 int restart = 0;
 
-void the_end()
-{
-	int last_score = m/10;
-	int page = 0;
-	while (1)
-	{
-		setactivepage(page);
-		setvisualpage(1 - page);
-		cleardevice();
-		char c[50];
-		setcolor(WHITE);
-		settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3);
-		sprintf(c, "Your score: %d", last_score);
-		outtextxy(Width / 3, Height / 2, c);
-		strcpy(c, "Press enter to restart");
-		outtextxy(Width / 3 - 100, Height / 2 + 50, c);
-		strcpy(c, "Esc to quit");
-		outtextxy(Width / 3 - 100, Height / 2 + 100, c);
-		if (GetAsyncKeyState(VK_ESCAPE))
-		{
-			closegraph();
-		}
-		/*else if(GetAsyncKeyState(13))
-		{
-			restart = 1;
-		}*/
-		page = 1 - page;
-		delay(20);
-	}
-}
+void menu();
+void the_end();
+void Tutorial();
+
 
 void menu() {
 	srand(time(NULL));
@@ -55,9 +29,6 @@ void menu() {
 	settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 7);
 	strcpy(c, "RAPID ROLL");
 	outtextxy(100, 50, c);
-	//	setcolor(4);
-	//    rectangle(200,150,500,600);
-	//  	rectangle(201,151,499,599);
 	setcolor(YELLOW);
 	settextstyle(SIMPLEX_FONT, HORIZ_DIR, 3);
 
@@ -91,8 +62,45 @@ void menu() {
 	outtextxy(225, 515, c);
 }
 
+
+void the_end()
+{
+	int last_score = m;
+	int page = 0;
+	while (1)
+	{
+		setactivepage(page);
+		setvisualpage(1 - page);
+		cleardevice();
+		char c[50];
+		setcolor(WHITE);
+		settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3);
+		sprintf(c, "Your score: %d", last_score);
+		outtextxy(Width / 3, Height / 2, c);
+		strcpy(c, "Press enter to back to menu");
+		outtextxy(Width / 3 - 100, Height / 2 + 50, c);
+		strcpy(c, "Esc to quit");
+		outtextxy(Width / 3 - 100, Height / 2 + 100, c);
+		if (GetAsyncKeyState(VK_ESCAPE))
+		{
+			restart = 1;
+			break;
+		}
+		else if (GetAsyncKeyState(13))
+		{
+			restart = 2;
+			break;
+		}
+		page = 1 - page;
+		delay(20);
+	}
+}
+
 void Tutorial() {
+	srand(time(NULL));
 	char c[50];
+
+	cleardevice();
 	settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3);
 	strcpy(c, "AN MUI TEN <= HOAC => DE DI CHUYEN");
 	outtextxy(30, 250, c);
@@ -101,4 +109,5 @@ void Tutorial() {
 	strcpy(c, "DUNG CHAM VAO GAI");
 	outtextxy(150, 350, c);
 	delay(5000);
+
 }
