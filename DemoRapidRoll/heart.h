@@ -1,18 +1,15 @@
 #pragma once
 #include "general.h"
 
-void mark(int *m)
+void score(int *m)
 {
-	struct tm* crt_time;
-	time_t t = time(NULL);
-	crt_time = localtime(&t);
-	char strTime[30];
-	*m += crt_time->tm_sec;
-	sprintf_s(strTime, "%d", *m/10);
+	char strTime[1000];
+	*m += 3;
+	sprintf_s(strTime, "%d", *m);
 	char p[10];
 	setcolor(WHITE);
 	settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3);
-	strcpy(p, "Mark: ");
+	strcpy(p, "Score: ");
 	outtextxy(500, 40, p);
 	outtextxy(600, 40, strTime);
 }
