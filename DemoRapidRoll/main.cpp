@@ -11,12 +11,14 @@
 #include "heart.h"
 #pragma comment (lib, "graphics.lib")
 
+
 int main()
 {
+again:
 	BALL b;
 	BAR t, t2, t3;
 	FENCE f, f2;
-	initwindow(Width, Height, "Rapid Roll");
+	initwindow(Width, Height, "Rapid Roll", 400);
 	create_ball(&b);
 	create_bar(&t);
 	create_bar2(&t2);
@@ -24,7 +26,11 @@ int main()
 	create_fence(&f);
 	create_fence2(&f2);
 	int page = 0;
+
+	h = HEART;
+	m = SCORE;
 fi_choice: menu();
+
 	while (1)
 	{
 		if (GetAsyncKeyState(VK_LBUTTON)) {
@@ -32,13 +38,13 @@ fi_choice: menu();
 			int y = mousey();
 			if (x >= 206 && x <= 464 && y >= 171 && y <= 279)
 			{
+
 				while (1)
 				{
-					again:
 					setactivepage(page);
 					setvisualpage(1 - page);
 					cleardevice();
-					mark(&m);
+					score(&m);
 					hearts(&h);
 					head_fence();
 					foot_fence();
@@ -52,8 +58,18 @@ fi_choice: menu();
 					page = 1 - page;
 					delay(20);
 					if (h == 0)
+					{
 						the_end();
-					if (restart == 1) goto again;
+						if (restart == 1)
+						{
+							goto quit;
+						}
+						else if (restart == 2)
+						{
+							cleardevice();
+							goto again;
+						}
+					}
 				}
 			}
 			else if (x >= 206 && x <= 464 && y >= 321 && y <= 429) {
@@ -66,10 +82,10 @@ fi_choice: menu();
 				goto quit;
 			}
 		}
-			delay(20);
+		delay(20);
 	}
 	_getch();
-	quit:
+quit:
 	closegraph();
 	return 0;
 }
