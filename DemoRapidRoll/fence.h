@@ -34,11 +34,13 @@ void fence_move(FENCE* f)
 {
 	setfillstyle(SOLID_FILL, LIGHTRED);
 	setcolor(LIGHTRED);
-	if (m >= 15000 && m < 30000) f->speed = 6;
-	else if (m >= 30000 && m < 45000) f->speed = 7;
-	else if (m >= 45000 && m < 60000) f->speed = 8;
-	else if (m >= 60000 && m < 75000) f->speed = 9;
-	else if (m >= 75000) f->speed = 10;
+	if (m >= 1500 && m < 3000) f->speed = 6;
+	else if (m >= 3000 && m < 4500) f->speed = 7;
+	else if (m >= 4500 && m < 6000) f->speed = 8;
+	else if (m >= 6000 && m < 7500) f->speed = 9;
+	else if (m >= 7500 && m < 9000)f->speed = 10;
+	else if (m >= 9000 && m < 10500) f->speed = 11;
+	else if (m >= 10500) f->speed = 12;
 	for (int i = f->x; i <= f->x + 150; i += 20)
 	{
 		int points[6] = { i, f->y, i + 10, f->y - 20, i + 20, f->y };
