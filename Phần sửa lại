@@ -18,7 +18,7 @@ again:
 	BALL b;
 	BAR t, t2, t3;
 	FENCE f, f2;
-	initwindow(Width, Height, "Rapid Roll",400);
+	initwindow(Width, Height, "Rapid Roll", 400);
 	create_ball(&b);
 	create_bar(&t);
 	create_bar2(&t2);
@@ -27,10 +27,10 @@ again:
 	create_fence2(&f2);
 	int page = 0;
 
-	h = 3;
-	m = 0;
+	h = HEART;
+	m = SCORE;
 fi_choice: menu();
-	
+
 	while (1)
 	{
 		if (GetAsyncKeyState(VK_LBUTTON)) {
@@ -38,13 +38,13 @@ fi_choice: menu();
 			int y = mousey();
 			if (x >= 206 && x <= 464 && y >= 171 && y <= 279)
 			{
-			
+
 				while (1)
 				{
 					setactivepage(page);
 					setvisualpage(1 - page);
 					cleardevice();
-					mark(&m);
+					score(&m);
 					hearts(&h);
 					head_fence();
 					foot_fence();
@@ -62,11 +62,15 @@ fi_choice: menu();
 						the_end();
 						if (restart == 1)
 						{
+							closegraph();
+							Save_score(m);
 							goto quit;
 						}
 						else if (restart == 2)
 						{
-							cleardevice();			
+							cleardevice();
+							closegraph();
+							Save_score(m);
 							goto again;
 						}
 					}
