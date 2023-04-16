@@ -67,6 +67,7 @@ fi_choice: menu();
 						else if (restart == 2)
 						{
 							cleardevice();
+							closegraph();
 							goto again;
 						}
 					}
