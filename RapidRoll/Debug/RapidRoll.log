@@ -1,8 +1,0 @@
-﻿  main.cpp
-D:\RapidRoll\RapidRoll\RapidRoll\graphics.h(281,5): warning C4273: 'getch': inconsistent dll linkage
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\conio.h(444,30): message : see previous definition of 'getch'
-D:\RapidRoll\RapidRoll\RapidRoll\graphics.h(282,5): warning C4273: 'kbhit': inconsistent dll linkage
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\conio.h(450,30): message : see previous definition of 'kbhit'
-D:\RapidRoll\RapidRoll\RapidRoll\general.h(25,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\RapidRoll\RapidRoll\RapidRoll\general.h(110,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  RapidRoll.vcxproj -> D:\RapidRoll\RapidRoll\Debug\RapidRoll.exe
