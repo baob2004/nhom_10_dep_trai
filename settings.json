@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "random": "c",
+        "*.tcc": "cpp",
+        "OnBai.C": "cpp",
+        "Menu.C": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
